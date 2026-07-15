@@ -98,7 +98,10 @@
 				reg = <0x1000 0x100>;
 				interrupts =
 					<0x2 0x10 0x0 IRQ_TYPE_EDGE_RISING>,
-					<0x2 0x10 0x1 IRQ_TYPE_EDGE_RISING>,
+					/*ifdef OPLUS_FEATURE_CHG_BASIC*/
+					/*jacky 2021/1125 Remove interrupt for  externer charger IC */
+					/*<0x2 0x10 0x1 IRQ_TYPE_EDGE_RISING>,*/
+					/*endef*/
 					<0x2 0x10 0x2 IRQ_TYPE_EDGE_RISING>,
 					<0x2 0x10 0x3 IRQ_TYPE_EDGE_RISING>,
 					<0x2 0x10 0x4 IRQ_TYPE_EDGE_RISING>,
@@ -106,7 +109,10 @@
 					<0x2 0x10 0x7 IRQ_TYPE_EDGE_BOTH>;
 
 				interrupt-names = "chgr-error",
-						  "chg-state-change",
+						/*ifdef OPLUS_FEATURE_CHG_BASIC*/
+						/*jacky 2021/1125 Remove interrupt for  externer charger IC */
+						  /*"chg-state-change",*/
+						/*endef*/
 						  "step-chg-state-change",
 						  "step-chg-soc-update-fail",
 						  "step-chg-soc-update-req",
@@ -122,16 +128,22 @@
 					<0x2 0x11 0x2 IRQ_TYPE_EDGE_BOTH>,
 					<0x2 0x11 0x4 IRQ_TYPE_EDGE_BOTH>,
 					<0x2 0x11 0x5 IRQ_TYPE_EDGE_BOTH>,
-					<0x2 0x11 0x6 IRQ_TYPE_EDGE_BOTH>,
-					<0x2 0x11 0x7 IRQ_TYPE_EDGE_BOTH>;
+					/*ifdef OPLUS_FEATURE_CHG_BASIC*/
+					/*jacky 2021/1125 Remove interrupt for  externer charger IC */
+					<0x2 0x11 0x6 IRQ_TYPE_EDGE_BOTH>;
+					/*<0x2 0x11 0x7 IRQ_TYPE_EDGE_BOTH>;*/
+					/*endef*/
 
 				interrupt-names = "otg-fail",
 						  "otg-oc-disable-sw",
 						  "otg-oc-hiccup",
 						  "high-duty-cycle",
 						  "input-current-limiting",
-						  "concurrent-mode-disable",
-						  "switcher-power-ok";
+						/*ifdef OPLUS_FEATURE_CHG_BASIC*/
+						/*jacky 2021/1125 Remove interrupt for  externer charger IC */
+						  "concurrent-mode-disable";
+						  /*"switcher-power-ok";*/
+						  /*endef*/
 			};
 
 			qcom,batif@1200 {
@@ -157,7 +169,10 @@
 			qcom,usb@1300 {
 				reg = <0x1300 0x100>;
 				interrupts =
-					<0x2 0x13 0x0 IRQ_TYPE_EDGE_BOTH>,
+					/*ifdef OPLUS_FEATURE_CHG_BASIC*/
+					/*jacky 2021/1125 Remove interrupt for  externer charger IC */
+					/*<0x2 0x13 0x0 IRQ_TYPE_EDGE_BOTH>,*/
+					/*endef*/
 					<0x2 0x13 0x1 IRQ_TYPE_EDGE_BOTH>,
 					<0x2 0x13 0x2 IRQ_TYPE_EDGE_BOTH>,
 					<0x2 0x13 0x3 IRQ_TYPE_EDGE_BOTH>,
@@ -165,8 +180,10 @@
 					<0x2 0x13 0x5 IRQ_TYPE_EDGE_BOTH>,
 					<0x2 0x13 0x6 IRQ_TYPE_EDGE_RISING>,
 					<0x2 0x13 0x7 IRQ_TYPE_EDGE_RISING>;
-
-				interrupt-names = "usbin-collapse",
+				/*ifdef OPLUS_FEATURE_CHG_BASIC*/
+				/*jacky 2021/1125 Remove interrupt for  externer charger IC */
+				interrupt-names = /*"usbin-collapse",*/
+				/*ended*/
 						  "usbin-vashdn",
 						  "usbin-uv",
 						  "usbin-ov",
@@ -223,16 +240,22 @@
 				interrupts =
 					<0x2 0x16 0x0 IRQ_TYPE_EDGE_RISING>,
 					<0x2 0x16 0x1 IRQ_TYPE_EDGE_RISING>,
-					<0x2 0x16 0x2 IRQ_TYPE_EDGE_BOTH>,
-					<0x2 0x16 0x3 IRQ_TYPE_EDGE_BOTH>,
+					/*ifdef OPLUS_FEATURE_CHG_BASIC*/
+					/*jacky 2021/1125 Remove interrupt for  externer charger IC */
+					/*<0x2 0x16 0x2 IRQ_TYPE_EDGE_BOTH>,*/
+					/*<0x2 0x16 0x3 IRQ_TYPE_EDGE_BOTH>,*/
+					/*endef*/
 					<0x2 0x16 0x4 IRQ_TYPE_EDGE_BOTH>,
 					<0x2 0x16 0x6 IRQ_TYPE_EDGE_BOTH>,
 					<0x2 0x16 0x7 IRQ_TYPE_EDGE_BOTH>;
 
 				interrupt-names = "wdog-snarl",
 						  "wdog-bark",
-						  "aicl-fail",
-						  "aicl-done",
+						/*ifdef OPLUS_FEATURE_CHG_BASIC*/
+						/*jacky 2021/1125 Remove interrupt for  externer charger IC */
+						  /*"aicl-fail",*/
+						  /*"aicl-done",*/
+						  /*endef*/
 						  "smb-en",
 						  "temp-change",
 						  "temp-change-smb";
@@ -416,6 +439,27 @@
 				label = "smb1355_therm";
 				qcom,ratiometric;
 				qcom,hw-settle-time = <200>;
+				qcom,pre-scaling = <1 1>;
+			};
+			chgID_voltage_adc {
+				reg = <ADC_GPIO3>;
+				label = "chgID_voltage_adc";
+				qcom,pre-scaling = <1 1>;
+				qcom,ratiometric;
+				qcom,hw-settle-time = <200>;
+			};
+			usb_temp_adc {
+				reg = <ADC_AMUX_THM4_PU2>;
+				label = "usb_temp_adc";
+				qcom,pre-scaling = <1 1>;
+				qcom,ratiometric;
+				qcom,hw-settle-time = <200>;
+			};
+			// #endif
+			board_id {
+				reg = <ADC_GPIO1>;
+				label = "board_id_vdata";
+				qcom,ratiometric;
 				qcom,pre-scaling = <1 1>;
 			};
 		};
@@ -719,7 +763,6 @@
 		thermal-sensors = <&bcl_soc>;
 		tracks-low;
 		wake-capable-sensor;
-
 		trips {
 			soc_trip:soc-trip {
 				temperature = <10>;

@@ -1,3 +1,7 @@
+// SPDX-License-Identifier: GPL-2.0-only
+/*
+* Copyright (C) 2018-2020 Oplus. All rights reserved.
+*/
 &mdss_mdp {
 	dsi_dual_sim_vid: qcom,mdss_dsi_dual_sim_video {
 		qcom,mdss-dsi-panel-name = "Sim dual video mode dsi panel";

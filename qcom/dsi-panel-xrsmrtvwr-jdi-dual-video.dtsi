@@ -1,3 +1,7 @@
+// SPDX-License-Identifier: GPL-2.0-only
+/*
+* Copyright (C) 2018-2020 Oplus. All rights reserved.
+*/
 &mdss_mdp {
 	dsi_dual_xrsmrtvwr_jdi_video: qcom,mdss_dsi_xrsmrtvwr_video_jdi {
 		qcom,mdss-dsi-panel-name =

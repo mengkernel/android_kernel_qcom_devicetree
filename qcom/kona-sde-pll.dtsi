@@ -15,7 +15,11 @@
 		clock-rate = <0>;
 		memory-region = <&dfps_data_memory>;
 		qcom,dsi-pll-ssc-en;
-		qcom,dsi-pll-ssc-mode = "down-spread";
+		//#ifndef VENDOR_EDIT
+		//qcom,dsi-pll-ssc-mode = "down-spread";
+		//#else
+		qcom,dsi-pll-ssc-mode = "center-spread";
+		//#endif /* VENDOR_EDIT */
 	};
 
 	mdss_dsi1_pll: qcom,mdss_dsi_pll@ae96900 {
@@ -33,7 +37,11 @@
 		clock-names = "iface_clk";
 		clock-rate = <0>;
 		qcom,dsi-pll-ssc-en;
-		qcom,dsi-pll-ssc-mode = "down-spread";
+		//#ifndef VENDOR_EDIT
+		//qcom,dsi-pll-ssc-mode = "down-spread";
+		//#else
+		qcom,dsi-pll-ssc-mode = "center-spread";
+		//#endif /* VENDOR_EDIT */
 	};
 
 	mdss_dp_pll: qcom,mdss_dp_pll@c011000 {

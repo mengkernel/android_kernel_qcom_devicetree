@@ -1,3 +1,7 @@
+// SPDX-License-Identifier: GPL-2.0-only
+/*
+* Copyright (C) 2018-2020 Oplus. All rights reserved.
+*/
 &mdss_mdp {
 	dsi_sw43404_amoled_fhd_plus_cmd: qcom,mdss_dsi_sw43404_fhd_plus_cmd {
 		qcom,mdss-dsi-panel-name =

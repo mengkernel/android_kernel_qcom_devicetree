@@ -1,3 +1,7 @@
+// SPDX-License-Identifier: GPL-2.0-only
+/*
+* Copyright (C) 2018-2020 Oplus. All rights reserved.
+*/
 &mdss_mdp {
 	dsi_r66451_amoled_120hz_video: qcom,mdss_dsi_r66451_fhd_plus_120hz_video {
 		qcom,mdss-dsi-panel-name =
@@ -22,8 +26,6 @@
 		qcom,mdss-dsi-mdp-trigger = "none";
 		qcom,mdss-dsi-reset-sequence = <1 20>, <0 10>, <1 20>;
 		qcom,adjust-timer-wakeup-ms = <1>;
-		qcom,mdss-pan-physical-width-dimension = <72>;
-		qcom,mdss-pan-physical-height-dimension = <157>;
 		qcom,mdss-dsi-display-timings {
 			timing@0 {
 				qcom,mdss-dsi-panel-framerate = <120>;

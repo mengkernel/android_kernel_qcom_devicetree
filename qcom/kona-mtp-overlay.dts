@@ -12,5 +12,6 @@
 	model = "Qualcomm Technologies, Inc. kona MTP";
 	compatible = "qcom,kona-mtp", "qcom,kona", "qcom,mtp";
 	qcom,board-id = <0x10008 0>;
+	oplus,dtsi_no = <20351>;
 };
 
