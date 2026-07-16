@@ -134,7 +134,7 @@
 
 &sdhc_2 {
 	vdd-supply = <&pm8150a_l9>;
-	qcom,vdd-voltage-level = <2950000 2960000>;
+	qcom,vdd-voltage-level = <2800000 2960000>;
 	qcom,vdd-current-level = <200 800000>;
 
 	vdd-io-supply = <&pm8150a_l6>;
